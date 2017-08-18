@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoonic", "Zoonic\Zoonic.csproj", "{26EB406D-E455-4296-A725-063D6EEEAA1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoonic.Libs", "Zoonic.Libs\Zoonic.Libs.csproj", "{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{26EB406D-E455-4296-A725-063D6EEEAA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26EB406D-E455-4296-A725-063D6EEEAA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26EB406D-E455-4296-A725-063D6EEEAA1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

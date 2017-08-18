@@ -2,14 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Zoonic.Lib</AssemblyName>
+    <RootNamespace>Zoonic.Lib</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="StatePipeline.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Zoonic.Libs\Zoonic.Libs.csproj" />
+    <Compile Remove="Collection\SortedList.cs" />
   </ItemGroup>
 
 </Project>
