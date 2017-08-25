@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="~T\**" />
+    <EmbeddedResource Remove="~T\**" />
+    <None Remove="~T\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="StatePipeline.cs" />
   </ItemGroup>
 

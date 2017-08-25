@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Zoonic.Concurrency
 {
-    public interface IPipeline:IEnumerable<IHandler>
+    public interface IPipeline : IEnumerable<IHandler>
     {
         IHandlerContext Context(string name);
         IHandlerContext Context<T>();
@@ -18,9 +18,9 @@ namespace Zoonic.Concurrency
         IPipeline AddLast(IExecutorGroup group, string name, IHandler value);
 
 
-        IPipeline AddBefore(string beForename,string name, IHandler value);
+        IPipeline AddBefore(string beForename, string name, IHandler value);
 
-        IPipeline AddLast(IExecutorGroup group,string beforeName, string name, IHandler value);
+        //IPipeline AddLast(IExecutorGroup group,string beforeName, string name, IHandler value);
 
 
         IPipeline AddAfter(string beForename, string name, IHandler value);
@@ -28,7 +28,7 @@ namespace Zoonic.Concurrency
         IPipeline AddAfter(IExecutorGroup group, string beforeName, string name, IHandler value);
 
         IPipeline AddFirst(params IHandler[] values);
-        IPipeline AddFirst(IExecutorGroup group,params IHandler[] values);
+        IPipeline AddFirst(IExecutorGroup group, params IHandler[] values);
 
 
         IPipeline AddLast(params IHandler[] values);

@@ -121,7 +121,8 @@ namespace Zoonic.Concurrency
                             {
                                 var handler = context.Next();
                                 var pipelineState = PipelineState;
-                                if (handler == null && !(pipelineState == PipelineState.Canceled || pipelineState == PipelineState.Completed || pipelineState == PipelineState.Exception))
+                                if (handler == null && !(pipelineState == PipelineState.Canceled || pipelineState == PipelineState.Completed 
+                                || pipelineState == PipelineState.Exception))
                                 {
                                     Completed();
                                     return;

@@ -11,14 +11,14 @@ namespace Zoonic.Concurrency
     using Zoonic.Lib.Collection;
     using Zoonic.Lib;
 
-    public abstract class Executor : IExecutor
+    public abstract class Executor<T> : IExecutor<T>
     {
         protected Executor():this(null)
         {
         }
 
-        public IExecutorGroup Parent { get; private set; }
-        protected Executor(IExecutorGroup parent)
+        public IExecutorGroup<T> Parent { get; private set; }
+        protected Executor(IExecutorGroup<T> parent)
         {
             this.Parent = parent;
         }
@@ -126,7 +126,7 @@ namespace Zoonic.Concurrency
         {
             Require.NotNull(action);
 
-            return this.Schedule(new RunnableScheduledTask(this, action, PreciseTimeSpan.Deadline(delay)));
+            return this.Schedule(new RunnableScheduledTask<T>(this, action, PreciseTimeSpan.Deadline(delay)));
         }
 
         public virtual IScheduledTask Schedule(Action action, TimeSpan delay)

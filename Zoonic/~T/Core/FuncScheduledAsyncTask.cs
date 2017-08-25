@@ -5,7 +5,7 @@ namespace Zoonic.Concurrency
     using System.Threading;
     using Zoonic.Lib;
 
-    sealed class FuncScheduledAsyncTask : ScheduledAsyncTask
+    sealed class FuncScheduledAsyncTask<T> : ScheduledAsyncTask<T>
     {
         readonly Action action;
 

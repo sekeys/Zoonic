@@ -6,7 +6,7 @@ namespace Zoonic.Concurrency
     using System;
     using Zoonic.Lib;
 
-    public interface IScheduledRunnable<T> : IRunnable<T>, IScheduledTask<T>, IComparable<IScheduledRunnable>
+    public interface IScheduledRunnable<T> : IRunnable<T>, IScheduledTask<T>, IComparable<IScheduledRunnable<T>>
     {
     }
 }
