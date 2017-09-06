@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  zhimifan:
+    image: zhimifan
+    build:
+      context: ./Zhimifan
+      dockerfile: Dockerfile

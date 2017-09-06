@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Zoonic.Lib;
 using System.Linq;
 using Zoonic.Attributes;
+using Zoonic.Lib.Authentication;
 
 namespace Zoonic.Concurrency
 {
@@ -15,30 +16,34 @@ namespace Zoonic.Concurrency
     /// </summary>
     public class SynchronizationPipeline : IPipeline
     {
-
-        class PipelineScopeValue
+        public static PipelineScopeValue ScopeValue
         {
-            public PipelineState State { get; set; }
+            get
+            {
+                return Accessor<PipelineScopeValue>.Current;
+            }
         }
         internal class HandlerContext : SynchronizationHandlerContext
         {
             public HandlerContext Prev;
             public HandlerContext Nxt;
-
             public bool SkipAuthentication { get; private set; } = false;
             public HandlerContext(IPipeline pipeline, IHandler handler, string name) : base(pipeline, handler, name)
             {
                 this.Attributes = handler.GetType().GetCustomAttributes(false) as IEnumerable<Attribute>;
-                if (this.Attributes.Count() > 0)
+                if (this.Attributes !=null &&this.Attributes.Count() > 0)
                 {
                     var skipAuthenAttr = this.Attributes.Where(m => m is SkipAuthenticationAttribute).FirstOrDefault();
                     if (skipAuthenAttr != null)
                     {
                         SkipAuthentication = true;
                     }
-
                 }
-               
+                else
+                {
+                    SkipAuthentication = true;
+                }
+
             }
             public HandlerContext(IPipeline pipeline, IHandler handler) : base(pipeline, handler, null)
             {
@@ -51,19 +56,66 @@ namespace Zoonic.Concurrency
             {
                 this.Handler = new ActionHandler(action);
             }
-            public IEnumerable<Attribute> Attributes { get;private set; }
+            public IEnumerable<Attribute> Attributes { get; private set; } = new List<Attribute>();
 
             protected override void HandleCore()
             {
                 try
                 {
+                    if (!this.SkipAuthentication)
+                    {
+                        IUser user = null;
+                        if (ScopeValue.TryGet<IUser>("user", out user) && this.Attributes!=null)
+                        {
+                            foreach (IAuthenticationAttribute item in this.Attributes.Where(m => m is IAuthenticationAttribute))
+                            {
+                                item.Authorized(user);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
+                    }
+                    Task.Run(() =>
+                    {
+                        if (this.Attributes != null)
+                        {
+                            foreach (LogAttribute item in
+                            this.Attributes.Where(m => m is LogAttribute))
+                            {
+                                item.Log();
+                            }
+                        }
+                    });
+                    if (this.Attributes != null)
+                    {
+                        foreach (ExecutingAttribute item in this.Attributes.Where(m => m is ExecutingAttribute)
+                            .Select(m => (ExecutingAttribute)m).OrderBy(m => m.Priority))
+                        {
+                            item.Execute();
+                        }
+                    }
+                    //这里执行代码
                     Handler.Handle();
+                    if (this.Attributes != null)
+                    {
+                        foreach (ExecutedAttribute item in this.Attributes.Where(m => m is ExecutedAttribute)
+                            .Select(m => (ExecutedAttribute)m).OrderBy(m => m.Priority))
+                        {
+                            item.Execute();
+                        }
+                    }
                     Completed();
                 }
                 catch (Exception ex)
                 {
                     ExceptionCaught(ex);
                 }
+            }
+            public override void Handle()
+            {
+                base.Handle();
             }
 
             public override IHandlerContext Next()
@@ -123,7 +175,6 @@ namespace Zoonic.Concurrency
         readonly Action<Exception> OnException;
         public SynchronizationPipeline(Action<Exception> exhandler)
         {
-            Accessor<PipelineScopeValue>.Current = new PipelineScopeValue();
             OnException = exhandler;
             head = new HeadContext(this);
             tail = new TailContext(this);
@@ -397,7 +448,7 @@ namespace Zoonic.Concurrency
                     var handler = context.Next();
                     if (handler == null)
                         Completed();
-                    
+
                     handler.Handle();
                 }
 
@@ -473,6 +524,7 @@ namespace Zoonic.Concurrency
         {
             try
             {
+                Accessor<PipelineScopeValue>.Current = new PipelineScopeValue();
                 this.head.Handle();
             }
             catch (Exception ex)

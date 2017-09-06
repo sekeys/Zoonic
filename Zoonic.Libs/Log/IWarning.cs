@@ -6,5 +6,6 @@ namespace Zoonic.Lib.Log
 {
     public interface IWarning
     {
+        void Warning(LogInformation info);
     }
 }

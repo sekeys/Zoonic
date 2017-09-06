@@ -3,9 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoonic", "Zoonic\Zoonic.csproj", "{26EB406D-E455-4296-A725-063D6EEEAA1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zoonic", "Zoonic\Zoonic.csproj", "{26EB406D-E455-4296-A725-063D6EEEAA1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoonic.Libs", "Zoonic.Libs\Zoonic.Libs.csproj", "{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zoonic.Libs", "Zoonic.Libs\Zoonic.Libs.csproj", "{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoonic.Web", "Zoonic.Web\Zoonic.Web.csproj", "{ADE69576-9CC1-441D-9300-0878DA4D7CC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{7F9FCFFA-2E89-49C9-B675-700469E135BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{82184FA8-ABFA-4CA5-9982-F91DF47CE05C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{5DA2C38E-2D47-472E-A0CB-50B8C4AA6508}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhimifan", "Zhimifan\Zhimifan.csproj", "{89F388C9-590B-4764-8DC1-21D1955B60DA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2E9A4544-E9BD-47CE-9111-3A1199643D4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +33,30 @@ Global
 		{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46C1849B-311E-42F0-8FE0-2F0E5E5FF956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE69576-9CC1-441D-9300-0878DA4D7CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE69576-9CC1-441D-9300-0878DA4D7CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE69576-9CC1-441D-9300-0878DA4D7CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE69576-9CC1-441D-9300-0878DA4D7CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA2C38E-2D47-472E-A0CB-50B8C4AA6508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA2C38E-2D47-472E-A0CB-50B8C4AA6508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA2C38E-2D47-472E-A0CB-50B8C4AA6508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA2C38E-2D47-472E-A0CB-50B8C4AA6508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F388C9-590B-4764-8DC1-21D1955B60DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F388C9-590B-4764-8DC1-21D1955B60DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F388C9-590B-4764-8DC1-21D1955B60DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F388C9-590B-4764-8DC1-21D1955B60DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E9A4544-E9BD-47CE-9111-3A1199643D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E9A4544-E9BD-47CE-9111-3A1199643D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E9A4544-E9BD-47CE-9111-3A1199643D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E9A4544-E9BD-47CE-9111-3A1199643D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{82184FA8-ABFA-4CA5-9982-F91DF47CE05C} = {7F9FCFFA-2E89-49C9-B675-700469E135BF}
+		{5DA2C38E-2D47-472E-A0CB-50B8C4AA6508} = {82184FA8-ABFA-4CA5-9982-F91DF47CE05C}
+		{89F388C9-590B-4764-8DC1-21D1955B60DA} = {82184FA8-ABFA-4CA5-9982-F91DF47CE05C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EED854ED-305A-440F-9EFC-5E10009202D7}

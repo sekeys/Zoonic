@@ -6,5 +6,6 @@ namespace Zoonic.Lib.Log
 {
     public interface IException
     {
+        void Exception(LogInformation info);
     }
 }

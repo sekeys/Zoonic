@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Zoonic.Lib.Log
 {
-    public interface IError
+    public interface IErrors
     {
+        void Error(LogInformation info);
     }
 }

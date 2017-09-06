@@ -6,7 +6,7 @@ namespace Zoonic.Concurrency
 {
     public abstract class StatePipeline : AbstractPipeline
     {
-        public StatePipeline():base(new IndependentThreadExecutor("",null))
+        public StatePipeline():base(new IndependentThreadExecutor("",TimeSpan.Zero))
         {
             SetHead(new StateHeadContext(DefaultExecutor, this));
             SetTail(new StateTailContext(DefaultExecutor, this));

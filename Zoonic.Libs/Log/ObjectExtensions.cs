@@ -13,11 +13,11 @@ namespace Zoonic.Lib.Log
                 throw new Exception($"{nameof(obj)} can't allow be null value");
             }
         }
-        public static void ThrowIfnull(this object obj,string msg)
+        public static void ThrowIfnull(this object obj, string msg)
         {
             if (obj == null)
             {
-                throw new Exception(string.Format(msg,nameof(msg)));
+                throw new Exception(string.Format(msg, nameof(msg)));
             }
         }
 
@@ -31,10 +31,10 @@ namespace Zoonic.Lib.Log
         }
         public static void ThrowIfWhitespace(this object obj, string msg)
         {
-            obj.ThrowIfnull( msg);
+            obj.ThrowIfnull(msg);
             if (obj is string)
             {
-               if(string.IsNullOrWhiteSpace(obj as string)) throw new Exception(string.Format(msg, nameof(msg)));
+                if (string.IsNullOrWhiteSpace(obj as string)) throw new Exception(string.Format(msg, nameof(msg)));
             }
         }
         public static void Throw<T>(this object obj, Func<T, bool> func)
@@ -50,7 +50,7 @@ namespace Zoonic.Lib.Log
         }
         public static void Throw<T>(this object obj, Func<T, bool> func, string msg)
         {
-            if(!(obj is T))
+            if (!(obj is T))
             {
                 throw new Exception(msg);
             }
@@ -59,7 +59,7 @@ namespace Zoonic.Lib.Log
                 throw new Exception(msg);
             }
         }
-        public static void Throw(this object obj,Func<object,bool> func, string msg)
+        public static void Throw(this object obj, Func<object, bool> func, string msg)
         {
             if (!func(obj))
             {
@@ -74,31 +74,33 @@ namespace Zoonic.Lib.Log
             }
         }
 
-        public static void DebugPackage()
+        public static void DebugPackage(this object obj)
         {
-
+            Accessor<IPackage>.Current.Equeue(new LogInformation()
+            {
+                Guid = null,
+                Information = Newtonsoft.Json.JsonConvert.SerializeObject(obj),
+                LogLevel = LogLevel.Debug
+            });
         }
-        public static void AssertPackage()
+        public static void AssertPackage(this object obj)
         {
-
+            Accessor<IPackage>.Current.Equeue(new LogInformation()
+            {
+                Guid = null,
+                Information = Newtonsoft.Json.JsonConvert.SerializeObject(obj),
+                LogLevel = LogLevel.Log
+            });
         }
-        public static void Debug()
+        public static void Debug(this object obj)
         {
-
+            Accessor<IPackage>.Current.Equeue(new LogInformation()
+            {
+                Guid = null,
+                Information = Newtonsoft.Json.JsonConvert.SerializeObject(obj),
+                LogLevel = LogLevel.Debug
+            });
         }
-
-        public static void DebugOnShared()
-        {
-
-        }
-        public static void AssertOnShared()
-        {
-
-        }
-
-        public static void Assert()
-        {
-            
-        }
+        
     }
 }

@@ -6,6 +6,7 @@ namespace Zoonic.Lib.Log
 {
     public interface ILogPush
     {
+        ILogWriter Writer { get; }
         void Push();
     }
 }

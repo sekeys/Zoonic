@@ -6,5 +6,6 @@ namespace Zoonic.Lib.Log
 {
     public interface ILog
     {
+        void Log(LogInformation infos);
     }
 }
