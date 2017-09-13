@@ -38,7 +38,8 @@ namespace Zoonic.Web.Route
         }
 
         protected UrlTreeItem Root { get; set; } = new UrlTreeItem();
-        public void Build(string routeUrl) => Build(routeUrl, new Dictionary<string, IConstraint>(), new DefaultRoute());
+        public void Build(string routeUrl) => Build(routeUrl, new Dictionary<string, IConstraint>()
+            , new DefaultRoute());
         public void Build(string routeUrl, Dictionary<string, IConstraint> constraints) => Build(routeUrl, constraints, new DefaultRoute());
         public void Build(string routeUrl, Dictionary<string, IConstraint> constraints, IRoute template)
         {
@@ -104,11 +105,11 @@ namespace Zoonic.Web.Route
             var urlSegments = url.Split('/').Where(m=>!string.IsNullOrWhiteSpace(m)).ToArray();
             if (urlSegments.Length == 0)
             {
-                return null;
+                return new DefaultRoute();
             }
             if (!Root.Contains(urlSegments[0]))
             {
-                return null;
+                return new DefaultRoute();
             }
             var trees = Root.Match(urlSegments[0]);
             foreach(var item in urlSegments.Skip(1))

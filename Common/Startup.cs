@@ -27,6 +27,8 @@ namespace Common
 
             //Zoonic.Configuration.ConfigurationStartup.RootConfigurePath =
             //  System.IO.Path.Combine(env.ContentRootPath, "setting.json");
+            Zoonic.Web.Route.ProcessorFactory.Register(new Zoonic.Web.Route.DefaultProcessorFactory());
+            Zoonic.Web.Route.ProcessorFactory.Factory.Cache("test",typeof(TestProcessor));
             Configuration = builder.Build();
         }
 

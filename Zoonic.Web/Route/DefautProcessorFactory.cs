@@ -20,12 +20,12 @@ namespace Zoonic.Web.Route
         public abstract void Cache<T>(string key);
         public abstract void Cache(string key,Type type);
 
-        public static IProcessor Factory
+        public static ProcessorFactory Factory
         {
             get;
             private set;
         }
-        public static void Register(IProcessor factory)
+        public static void Register(ProcessorFactory factory)
         {
             Factory = factory;
         }
@@ -33,7 +33,7 @@ namespace Zoonic.Web.Route
         public abstract IEnumerable<KeyValuePair<string, IProcessor>> Caches();
     }
 
-    public class DefaultBehaviorFactory : ProcessorFactory
+    public class DefaultProcessorFactory : ProcessorFactory
     {
         protected ConcurrentDictionary<string, IProcessor> Middles = new ConcurrentDictionary<string, IProcessor>();
         public override IEnumerable<KeyValuePair<string, IProcessor>> Caches()

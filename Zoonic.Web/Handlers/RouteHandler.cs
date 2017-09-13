@@ -12,7 +12,7 @@ namespace Zoonic.Web
         protected override void HandleCore()
         {
             RouteValueDictionary routeData = new RouteValueDictionary();
-            var router = UrlTree.Tree.Match(HttpContext.Request.Path,HttpContext, routeData);
+            var router = UrlTree.Tree.Match(AccessorContext.DefaultContext.Get<IgnoreDynamic>("parameter").Get<string>("url"), HttpContext, routeData);
             var t= router.RouteAsync();
             t.Wait();
             AccessorContext.DefaultContext.Set<RouteValueDictionary>(routeData);

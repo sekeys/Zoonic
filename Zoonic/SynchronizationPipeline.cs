@@ -31,7 +31,7 @@ namespace Zoonic.Concurrency
             public HandlerContext(IPipeline pipeline, IHandler handler, string name) : base(pipeline, handler, name)
             {
                 this.Attributes = handler.GetType().GetCustomAttributes(false) as IEnumerable<Attribute>;
-                if (this.Attributes !=null &&this.Attributes.Count() > 0)
+                if (this.Attributes != null && this.Attributes.Count() > 0)
                 {
                     var skipAuthenAttr = this.Attributes.Where(m => m is SkipAuthenticationAttribute).FirstOrDefault();
                     if (skipAuthenAttr != null)
@@ -43,6 +43,7 @@ namespace Zoonic.Concurrency
                 {
                     SkipAuthentication = true;
                 }
+
 
             }
             public HandlerContext(IPipeline pipeline, IHandler handler) : base(pipeline, handler, null)
@@ -65,7 +66,7 @@ namespace Zoonic.Concurrency
                     if (!this.SkipAuthentication)
                     {
                         IUser user = null;
-                        if (ScopeValue.TryGet<IUser>("user", out user) && this.Attributes!=null)
+                        if (ScopeValue.TryGet<IUser>("user", out user) && this.Attributes != null)
                         {
                             foreach (IAuthenticationAttribute item in this.Attributes.Where(m => m is IAuthenticationAttribute))
                             {
@@ -120,7 +121,46 @@ namespace Zoonic.Concurrency
 
             public override IHandlerContext Next()
             {
-                return Nxt;
+                if (this.Attributes != null && this.Attributes.Count() > 0)
+                {
+                    var InvokeNexts = this.Attributes.Where(m => m is InvokeNextHandlerAttribute) 
+                        as IEnumerable<InvokeNextHandlerAttribute>;
+                    if (InvokeNexts != null && InvokeNexts.Count() > 0)
+                    {
+                        IHandler next = null;
+                        foreach (var item in InvokeNexts)
+                        {
+                            next = item.Invoke();
+                            if (next != null)
+                            {
+                                return Wrap(next);
+                            }
+                        }
+                        
+                    }
+                    var InvokeNextHandlerCs = this.Attributes.Where(m => m is InvokeNextHandlerContextAttribute) 
+                        as IEnumerable<InvokeNextHandlerContextAttribute>;
+                    if (InvokeNextHandlerCs != null && InvokeNextHandlerCs.Count() > 0)
+                    {
+                        IHandlerContext next = null;
+                        foreach (var item in InvokeNextHandlerCs)
+                        {
+                            next = item.Invoke();
+                            if (next != null)
+                            {
+                                return next;
+                            }
+                        }
+                    }
+                }
+                return  Nxt;
+            }
+            public IHandlerContext Wrap(IHandler handler)
+            {
+                var hc = new HandlerContext(this.Pipeline, handler, "asyonc_" + Guid.NewGuid().ToString());
+                hc.Nxt = this.Nxt;
+                hc.Prev = this;
+                return hc;
             }
         }
 
