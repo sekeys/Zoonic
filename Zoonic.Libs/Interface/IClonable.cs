@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib
+namespace Zoonic
 {
-    public abstract class Conifiguration
+    public interface IClonable<T>
     {
+        T Clone();
     }
 }

@@ -1,6 +1,6 @@
 ﻿
 
-namespace Zoonic.Lib
+namespace Zoonic
 {
     using System.Threading;
     /// <summary>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Zoonic.Lib.Authentication;
+using Zoonic.Authentication;
 
 namespace Zoonic.Attributes
 {

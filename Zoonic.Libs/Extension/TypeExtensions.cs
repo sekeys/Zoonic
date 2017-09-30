@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib.Extensions
+namespace Zoonic.Extensions
 {
     using System.ComponentModel;
     using System.Reflection;

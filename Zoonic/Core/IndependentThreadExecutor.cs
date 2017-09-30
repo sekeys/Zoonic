@@ -9,8 +9,8 @@ namespace Zoonic.Concurrency
     using System.Diagnostics.Contracts;
     using System.Threading;
     using System.Threading.Tasks;
-    using Zoonic.Lib;
-    using Zoonic.Lib.Collection;
+    using Zoonic;
+    using Zoonic.Collection;
 
     /// <summary>
     /// <see cref="IEventExecutor"/> backed by a single thread.

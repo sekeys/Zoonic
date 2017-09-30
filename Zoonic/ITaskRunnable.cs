@@ -3,7 +3,7 @@
 namespace Zoonic.Interface
 {
     using System.Threading.Tasks;
-    using Zoonic.Lib;
+    using Zoonic;
 
     public interface ITaskRunnable:IRunnable
     {

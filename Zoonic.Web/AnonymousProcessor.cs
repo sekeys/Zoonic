@@ -14,7 +14,7 @@ namespace Zoonic.Web
         public bool AllowDebug { get; private set; }
         public Type Type { get; private set; }
         
-        public override async Task<ProcessorResult> Processe()
+        public override async Task<ProcessorResult> Process()
         {
             return await Task.Run<ProcessorResult>(() =>
             {

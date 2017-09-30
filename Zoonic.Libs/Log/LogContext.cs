@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib.Log
+namespace Zoonic.Log
 {
-    public class LogContext : Context, IErrors, IDebug, IException, IWarning,IPackage
+    public class LogContext :  IErrors, IDebug, IException, IWarning,IPackage
     {
         public ILogQueue Queue { get; private set; } = null;
         public void Debug(object obj)

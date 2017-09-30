@@ -2,7 +2,7 @@
 namespace Zoonic.Concurrency
 {
     using System.Threading;
-    using Zoonic.Lib;
+    using Zoonic;
 
     abstract class ScheduledAsyncTask : ScheduledTask
     {

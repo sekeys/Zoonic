@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib.Log
+namespace Zoonic.Log
 {
     public interface ILogWriter
     {

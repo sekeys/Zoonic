@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib.Collection
+namespace Zoonic.Collection
 {
     public interface IConcurrentQueue<T>
     {

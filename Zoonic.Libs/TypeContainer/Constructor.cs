@@ -1,5 +1,5 @@
 ﻿
-namespace Zoonic.Lib
+namespace Zoonic
 {
     using System;
     using System.Collections.Generic;

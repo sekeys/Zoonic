@@ -1,6 +1,6 @@
 ﻿
 
-namespace Zoonic.Lib
+namespace Zoonic
 {
     using System;
     using System.Collections.Generic;
@@ -102,6 +102,18 @@ namespace Zoonic.Lib
             return default(T);
         }
         public bool Is<T>(string field) => Get(field) is T;
+        public bool Is<T>(string field,T value)
+        {
+            try
+            {
+                T obj = Get<T>(field);
+                return object.Equals(obj,value);
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
 
         public void Set(string field, object value) => this[field] = value;
     }

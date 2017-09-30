@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib.Authentication
+namespace Zoonic.Authentication
 {
     public interface  IUser
     {

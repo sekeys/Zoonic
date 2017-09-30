@@ -8,6 +8,6 @@ namespace Zoonic.Web
     public interface IProcessor
     {
 
-        Task<ProcessorResult> Processe();
+        Task<ProcessorResult> Process();
     }
 }

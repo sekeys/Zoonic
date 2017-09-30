@@ -29,6 +29,8 @@ namespace Common
             //  System.IO.Path.Combine(env.ContentRootPath, "setting.json");
             Zoonic.Web.Route.ProcessorFactory.Register(new Zoonic.Web.Route.DefaultProcessorFactory());
             Zoonic.Web.Route.ProcessorFactory.Factory.Cache("test",typeof(TestProcessor));
+            Zoonic.Web.Route.ProcessorFactory.Factory.Cache("weather", typeof(WeatherProcessor));
+            Zoonic.Web.Route.ProcessorFactory.Factory.Cache("express", typeof(ExpressProcessor));
             Configuration = builder.Build();
         }
 

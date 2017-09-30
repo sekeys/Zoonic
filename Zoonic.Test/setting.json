@@ -1,0 +1,19 @@
+﻿{
+  "unioncode": "init.base",
+  "web_authentication": ".u",
+  "appsettings": {
+    "connectionString": "server=rm-bp1kluk91gw87tca9o.mysql.rds.aliyuncs.com;database=Zoonic;uid=frontfile;pwd=Zoonic4Dev",
+    "viewrootpath": "~\\Views",
+    "defaultweb": "index",
+    "authenticationPage": "",
+    "web_authentication_cookie": ".u",
+    "mongodbConnectionstring": "mongodb://root:wangjian91@120.25.158.65:3717",
+    "frontfolder": "C:\\Users\\megam\\Documents\\visual studio 2017\\Projects\\Zoonic\\Zoonic.CDN",
+    "file.encrypts": "EDITOR.VITAE.COM.CN",
+    "HuaxueConnectionString": "Server=rm-bp1kluk91gw87tca9o.mysql.rds.aliyuncs.com;Stmt=;Database=webdata; User=wangjian;Password=Zoonic4Dev;",
+    "WeixinToken": "weixinzhimilivecomjxqianniao",
+    "EncodingAESKey": "vo2BZg809KRlqs440op1V1wlf3a0mxJkolV9pOV8yfp"
+    //Server=rm-bp1kluk91gw87tca9o.mysql.rds.aliyuncs.com;Option=3306;Stmt=;Database=huaxue; User=wangjian;Password=Zoonic4Dev;
+  }
+
+}

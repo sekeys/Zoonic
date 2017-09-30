@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Zoonic.Lib;
+using Zoonic;
 
 namespace Zoonic.Web
 {
@@ -11,7 +11,7 @@ namespace Zoonic.Web
     {
         public HttpContext HttpContext
         {
-            get { return Accessor<HttpContext>.Current; }
+            get { return AccessorContext.DefaultContext.Get<HttpContext>(); }
         }
 
         public HttpRequest Request { get => HttpContext.Request; }

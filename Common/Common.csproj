@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Entity\Entity.csproj" />
     <ProjectReference Include="..\Zoonic.Libs\Zoonic.Libs.csproj" />
     <ProjectReference Include="..\Zoonic.Web\Zoonic.Web.csproj" />
     <ProjectReference Include="..\Zoonic\Zoonic.csproj" />

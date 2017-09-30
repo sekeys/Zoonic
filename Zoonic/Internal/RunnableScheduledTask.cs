@@ -1,5 +1,5 @@
 ﻿using Zoonic.Interface;
-using Zoonic.Lib;
+using Zoonic;
 
 namespace Zoonic.Concurrency
 {

@@ -1,5 +1,5 @@
 ﻿
-namespace Zoonic.Lib.Collection
+namespace Zoonic.Collection
 {
     using System;
     using System.Collections.Generic;
@@ -63,13 +63,17 @@ namespace Zoonic.Lib.Collection
             return new ImmutableList<T>(newData);
         }
 
-        private int IndexOf(T value)
+        public int IndexOf(T value)
         {
             for (var i = 0; i < _data.Length; ++i)
                 if (object.Equals(_data[i], value))
                     return i;
 
             return -1;
+        }
+        public bool Contains(T value)
+        {
+            return IndexOf(value) > -1;
         }
     }
 }

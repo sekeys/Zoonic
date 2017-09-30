@@ -1,6 +1,6 @@
 ﻿
 
-namespace Zoonic.Lib.Extensions
+namespace Zoonic.Extensions
 {
     using System;
     using System.Collections.Generic;

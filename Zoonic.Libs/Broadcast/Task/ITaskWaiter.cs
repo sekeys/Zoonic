@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib
+namespace Zoonic.Broadcast.Tasks
 {
-    public interface IClonable<T>
+    public interface ITaskWaiter
     {
-        T Clone();
     }
 }

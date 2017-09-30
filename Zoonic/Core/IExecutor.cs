@@ -6,7 +6,7 @@ namespace Zoonic.Concurrency
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Zoonic.Lib;
+    using Zoonic;
 
     public interface IExecutor
     {

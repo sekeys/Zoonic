@@ -6,8 +6,8 @@ namespace Zoonic.Web
     using System.Collections.Generic;
     using System.Text;
     using Zoonic.Concurrency;
-    using Zoonic.Lib;
-    using Zoonic.Lib.Authentication;
+    using Zoonic;
+    using Zoonic.Authentication;
 
     public abstract class WebHandler : IHandler
     {

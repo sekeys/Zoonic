@@ -4,8 +4,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Zoonic.Interface;
-using Zoonic.Lib;
-using Zoonic.Lib.Collection;
+using Zoonic;
+using Zoonic.Collection;
 
 namespace Zoonic.Concurrency
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Zoonic.Lib.Authentication
+namespace Zoonic.Authentication
 {
     public abstract class UserContext
     {

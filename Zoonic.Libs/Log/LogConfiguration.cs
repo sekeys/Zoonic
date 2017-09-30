@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Zoonic.Configuration;
 
-namespace Zoonic.Lib.Log
+namespace Zoonic.Log
 {
-    public class LogConfiguration:Lib.Conifiguration
+    public class LogConfiguration: ConfigurationStartup
     {
     }
 }

@@ -8,7 +8,7 @@ namespace Common
 {
     public class TestProcessor : ProcessorBase
     {
-        public override async Task<ProcessorResult> Processe()
+        public override async Task<ProcessorResult> Process()
         {
             return new JsonResult( new
             {

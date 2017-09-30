@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Zoonic.Lib
+namespace Zoonic
 {
     public class Base64Encoder
     {

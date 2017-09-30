@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
 
-namespace Zoonic.Lib
+namespace Zoonic
 {
     public class DynamicParameter : DynamicObject//,IEnumerable<object>,IEnumerator<object>
     {

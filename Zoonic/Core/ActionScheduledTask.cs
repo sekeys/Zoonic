@@ -3,7 +3,7 @@ namespace Zoonic.Concurrency
 {
     using Zoonic.Interface;
     using System;
-    using Zoonic.Lib;
+    using Zoonic;
 
     sealed class ActionScheduledTask : ScheduledTask
     {

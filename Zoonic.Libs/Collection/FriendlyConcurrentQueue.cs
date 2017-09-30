@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib.Collection
+namespace Zoonic.Collection
 {
     using System.Collections.Concurrent;
     public class FriendlyConcurrentQueue<T>:ConcurrentQueue<T>,IConcurrentQueue<T>

@@ -7,7 +7,7 @@ namespace Zoonic.Concurrency
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
-    using Zoonic.Lib;
+    using Zoonic;
 
     public abstract class AbstractPipeline : IPipeline
     {

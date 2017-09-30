@@ -4,7 +4,7 @@ using Zoonic.Interface;
 namespace Zoonic.Concurrency
 {
     using System;
-    using Zoonic.Lib;
+    using Zoonic;
 
     sealed class StateActionWithContextScheduledTask : ScheduledTask
     {

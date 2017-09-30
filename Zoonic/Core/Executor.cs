@@ -8,8 +8,8 @@ namespace Zoonic.Concurrency
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Zoonic.Lib.Collection;
-    using Zoonic.Lib;
+    using Zoonic.Collection;
+    using Zoonic;
 
     public abstract class Executor : IExecutor
     {

@@ -4,7 +4,7 @@ namespace Zoonic.Concurrency
 {
     using Zoonic.Interface;
     using System;
-    using Zoonic.Lib;
+    using Zoonic;
 
     public interface IScheduledRunnable : IRunnable, IScheduledTask, IComparable<IScheduledRunnable>
     {

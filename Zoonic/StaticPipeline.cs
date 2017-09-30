@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using Zoonic.Lib;
+using Zoonic;
 
 namespace Zoonic.Concurrency
 {

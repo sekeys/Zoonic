@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Zoonic.Lib;
+using Zoonic;
 using System.Linq;
 using Zoonic.Attributes;
-using Zoonic.Lib.Authentication;
+using Zoonic.Authentication;
 
 namespace Zoonic.Concurrency
 {
@@ -27,6 +27,7 @@ namespace Zoonic.Concurrency
         {
             public HandlerContext Prev;
             public HandlerContext Nxt;
+            public HandlerContext Tail;
             public bool SkipAuthentication { get; private set; } = false;
             public HandlerContext(IPipeline pipeline, IHandler handler, string name) : base(pipeline, handler, name)
             {
@@ -121,6 +122,10 @@ namespace Zoonic.Concurrency
 
             public override IHandlerContext Next()
             {
+                if (ScopeValue.Parameters.Contains("Breaker") && ScopeValue.Parameters.Is<bool>("Breaker",true))
+                {
+                    return Tail;
+                }
                 if (this.Attributes != null && this.Attributes.Count() > 0)
                 {
                     var InvokeNexts = this.Attributes.Where(m => m is InvokeNextHandlerAttribute) 
@@ -157,9 +162,10 @@ namespace Zoonic.Concurrency
             }
             public IHandlerContext Wrap(IHandler handler)
             {
-                var hc = new HandlerContext(this.Pipeline, handler, "asyonc_" + Guid.NewGuid().ToString());
+                var hc = new HandlerContext(this.Pipeline, handler, "asyonc_" + Guid.NewGuid().ToString()) { Tail = this.Tail };
                 hc.Nxt = this.Nxt;
                 hc.Prev = this;
+                
                 return hc;
             }
         }
@@ -203,7 +209,7 @@ namespace Zoonic.Concurrency
         private TailContext tail;
         private PipelineState pipelineState
         {
-            get => Zoonic.Lib.Accessor<PipelineScopeValue>.Current.State;
+            get => Zoonic.Accessor<PipelineScopeValue>.Current.State;
             set
             {
                 Accessor<PipelineScopeValue>.Current.State = value;
@@ -260,7 +266,7 @@ namespace Zoonic.Concurrency
 
         HandlerContext NewContext(string name, IHandler handler)
         {
-            return new HandlerContext(this, handler, name);
+            return new HandlerContext(this, handler, name) { Tail = this.tail };
         }
         public IPipeline AddAfter(IExecutorGroup group, string beforeName, string name, IHandler value)
         {
@@ -308,7 +314,7 @@ namespace Zoonic.Concurrency
             Require.NotNull(value);
             lock (this)
             {
-                AddLast0(new HandlerContext(this, value, name));
+                AddLast0(new HandlerContext(this, value, name) { Tail = this.tail });
             }
             return this;
         }
@@ -547,7 +553,7 @@ namespace Zoonic.Concurrency
         public IPipeline Replace(IHandler old, string newName, IHandler newValue)
         {
             var ctx = Context(old);
-            Replace0((HandlerContext)ctx, new HandlerContext(this, newValue, newName));
+            Replace0((HandlerContext)ctx, new HandlerContext(this, newValue, newName) { Tail = this.tail });
 
             return this;
         }
@@ -555,7 +561,7 @@ namespace Zoonic.Concurrency
         public IPipeline Replace(string old, string newName, IHandler newValue)
         {
             var ctx = Context(old);
-            Replace0((HandlerContext)ctx, new HandlerContext(this, newValue, newName));
+            Replace0((HandlerContext)ctx, new HandlerContext(this, newValue, newName) { Tail = this.tail });
 
             return this;
         }
@@ -596,7 +602,7 @@ namespace Zoonic.Concurrency
 
             var ctx = Context<T1>();
             Replace0((HandlerContext)ctx
-                , new HandlerContext(this, newValue));
+                , new HandlerContext(this, newValue) { Tail=this.tail});
 
             return this;
         }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib
+namespace Zoonic
 {
-    public abstract class Context
+    public interface IJsonConverter
     {
+        string ToJson();
     }
 }

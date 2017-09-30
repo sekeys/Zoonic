@@ -12,7 +12,7 @@ namespace Zoonic.Concurrency
         public PipelineScopeValue()
         {
             State = PipelineState.Unstarted;
-            Parameters = new Zoonic.Lib.IgnoreDynamic();
+            Parameters = new Zoonic.IgnoreDynamic();
         }
         public bool TryGet(string field, out object value)
         {

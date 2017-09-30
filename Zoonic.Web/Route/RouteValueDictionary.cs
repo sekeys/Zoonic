@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Zoonic.Lib;
+using Zoonic;
 
 namespace Zoonic.Web.Route
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zoonic.Lib
+namespace Zoonic
 {
     public sealed class AccessorContext:IDisposable
     {

@@ -6,7 +6,7 @@ namespace Zoonic.Concurrency
 {
     using System;
     using System.Threading;
-    using Zoonic.Lib;
+    using Zoonic;
 
     sealed class StateWithContextScheduledAsyncTask : ScheduledAsyncTask
     {

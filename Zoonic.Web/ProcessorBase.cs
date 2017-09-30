@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Zoonic.Lib;
-using Zoonic.Lib.Authentication;
+using Zoonic;
+using Zoonic.Authentication;
 
 namespace Zoonic.Web
 {
@@ -12,7 +12,7 @@ namespace Zoonic.Web
     {
         public HttpContext Context
         {
-            get { return Accessor<HttpContext>.Current; }
+            get { return AccessorContext.DefaultContext.Get<HttpContext>(); }
         }
 
         public HttpRequest Request { get => Context.Request; }
@@ -21,6 +21,6 @@ namespace Zoonic.Web
 
         public dynamic Parameter { get => AccessorContext.DefaultContext.Get<IgnoreDynamic>("parameter");  }
 
-        public abstract Task<ProcessorResult> Processe();
+        public abstract Task<ProcessorResult> Process();
     }
 }

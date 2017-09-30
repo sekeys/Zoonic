@@ -3,16 +3,23 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Zoonic.Lib</AssemblyName>
-    <RootNamespace>Zoonic.Lib</RootNamespace>
+    <RootNamespace>Zoonic</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Collection\SortedList.cs" />
+    <Compile Remove="Messages\Core\EntityHelper.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Chain\" />
+    <Folder Include="Exception\" />
   </ItemGroup>
 
 </Project>

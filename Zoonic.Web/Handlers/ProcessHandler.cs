@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Zoonic.Lib;
+using Zoonic;
 
 namespace Zoonic.Web.Handlers
 {
@@ -10,7 +10,7 @@ namespace Zoonic.Web.Handlers
         protected override async void HandleCore()
         {
             IProcessor processor = AccessorContext.DefaultContext.Get<IProcessor>();
-            var t = processor.Processe();
+            var t = processor.Process();
             t.Wait();
             if (t.Result == null)
             {

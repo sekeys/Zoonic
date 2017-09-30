@@ -4,7 +4,7 @@ namespace Zoonic.Concurrency
     using Zoonic.Interface;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Zoonic.Lib;
+    using Zoonic;
 
     public sealed class ExecutorTaskScheduler : TaskScheduler
     {
